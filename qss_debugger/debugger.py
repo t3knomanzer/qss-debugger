@@ -1,9 +1,23 @@
+# Copyright 2018 Ruben Henares
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 # *********************************************************************
 # +++ IMPORTS
 # *********************************************************************
 import os
 
-from Qt import QtGui, QtCore, QtWidgets
+from PyQt5 import QtGui, QtCore, QtWidgets
 
 from explorer import VisualTreeExplorer
 from painter import VisualTreePainter
@@ -17,7 +31,7 @@ class VisualTreeEventFilter(QtCore.QObject):
     # =====================================================================
     # +++ SIGNALS
     # =====================================================================
-    event_triggered = QtCore.Signal(QtCore.QObject, QtCore.QEvent)
+    event_triggered = QtCore.pyqtSignal(QtCore.QObject, QtCore.QEvent)
 
     # =====================================================================
     # +++ CONSTRUCTOR
@@ -155,15 +169,23 @@ class VisualTreeDebugger(QtWidgets.QWidget):
 # +++ ENTRY
 # =====================================================================
 if __name__ == "__main__":
+    class Window(QtWidgets.QMainWindow):
+        def __init__(self):
+            super(Window, self).__init__(None)
+
+            dummy_lyt = QtWidgets.QVBoxLayout()
+            dummy_lyt.addWidget(QtWidgets.QPushButton('Button'))
+            dummy_lyt.addWidget(QtWidgets.QLabel('Button'))
+            dummy_lyt.addWidget(QtWidgets.QCheckBox('Button'))
+
+            dummy_wgt = QtWidgets.QWidget()
+            dummy_wgt.setLayout(dummy_lyt)
+
+            self.setCentralWidget(dummy_wgt)
 
     app = QtWidgets.QApplication([])
-
-    dummy_btn = QtWidgets.QPushButton('Button')
-    dummy_window = QtWidgets.QMainWindow()
-    dummy_window.setCentralWidget(dummy_btn)
-
-    dummy_window.show()
-
-    debugger = VisualTreeDebugger(dummy_window)
+    window = Window()
+    debugger = VisualTreeDebugger(window)
+    window.show()
 
     app.exec_()
