@@ -53,7 +53,7 @@ class VisualCompilerDefault(VisualCompilerBase):
                     if len(line) == 2:
                         vars_map[line[0]] = line[1]
                     else:
-                        print 'Error in line {} from file {}'.format(line, file_name)
+                        print('Error in line {} from file {}'.format(line, file_name))
 
         with open(input_file_path, 'r') as file_handle:
             content = file_handle.read()

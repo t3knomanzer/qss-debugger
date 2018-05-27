@@ -3,7 +3,7 @@
 # *********************************************************************
 import os
 
-from PySide import QtGui, QtCore
+from Qt import QtGui, QtCore, QtWidgets
 
 from explorer import VisualTreeExplorer
 from painter import VisualTreePainter
@@ -36,7 +36,7 @@ class VisualTreeEventFilter(QtCore.QObject):
 # *********************************************************************
 # +++ CLASSES
 # *********************************************************************
-class VisualTreeDebugger(QtGui.QWidget):
+class VisualTreeDebugger(QtWidgets.QWidget):
     # =====================================================================
     # +++ CONSTRUCTOR
     # =====================================================================
@@ -149,3 +149,21 @@ class VisualTreeDebugger(QtGui.QWidget):
     # =====================================================================
     def _selection_changed(self, visual_items):
         self._painter.current_items = visual_items
+
+
+# ====================================================================
+# +++ ENTRY
+# =====================================================================
+if __name__ == "__main__":
+
+    app = QtWidgets.QApplication([])
+
+    dummy_btn = QtWidgets.QPushButton('Button')
+    dummy_window = QtWidgets.QMainWindow()
+    dummy_window.setCentralWidget(dummy_btn)
+
+    dummy_window.show()
+
+    debugger = VisualTreeDebugger(dummy_window)
+
+    app.exec_()

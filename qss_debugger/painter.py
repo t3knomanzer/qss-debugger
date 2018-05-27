@@ -5,13 +5,13 @@ import os
 import subprocess
 import hashlib
 
-from PySide import QtGui, QtCore
+from Qt import QtGui, QtCore, QtWidgets
 
 
 # *********************************************************************
 # +++ CLASS
 # *********************************************************************
-class VisualTreePainter(QtGui.QWidget):
+class VisualTreePainter(QtWidgets.QWidget):
     # =====================================================================
     # +++ CONSTRUCTOR
     # =====================================================================
