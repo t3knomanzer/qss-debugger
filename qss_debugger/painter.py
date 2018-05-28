@@ -16,7 +16,7 @@
 # +++ IMPORTS
 # *********************************************************************
 
-from PyQt5 import QtGui, QtCore, QtWidgets
+from Qt import QtGui, QtCore, QtWidgets
 
 
 # *********************************************************************

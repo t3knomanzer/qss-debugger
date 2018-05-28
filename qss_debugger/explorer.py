@@ -20,7 +20,7 @@ import hashlib
 
 from future.utils import iteritems
 
-from PyQt5 import QtGui, QtCore, QtWidgets
+from Qt import QtGui, QtCore, QtWidgets
 
 
 # *********************************************************************
@@ -34,9 +34,9 @@ class VisualTreeExplorer(QtWidgets.QDialog):
     # update_style_requested = QtCore.Signal()
     # closing = QtCore.Signal()
 
-    selection_changed = QtCore.pyqtSignal(list)
-    update_style_requested = QtCore.pyqtSignal()
-    closing = QtCore.pyqtSignal()
+    selection_changed = QtCore.Signal(list)
+    update_style_requested = QtCore.Signal()
+    closing = QtCore.Signal()
 
     # =====================================================================
     # +++ CONSTRUCTOR

@@ -17,11 +17,11 @@
 # *********************************************************************
 import os
 
-from PyQt5 import QtGui, QtCore, QtWidgets
+from Qt import QtGui, QtCore, QtWidgets
 
-from explorer import VisualTreeExplorer
-from painter import VisualTreePainter
-from compiler import VisualCompilerDefault
+from qss_debugger.explorer import VisualTreeExplorer
+from qss_debugger.painter import VisualTreePainter
+from qss_debugger.compiler import VisualCompilerDefault
 
 
 # *********************************************************************
@@ -31,7 +31,7 @@ class VisualTreeEventFilter(QtCore.QObject):
     # =====================================================================
     # +++ SIGNALS
     # =====================================================================
-    event_triggered = QtCore.pyqtSignal(QtCore.QObject, QtCore.QEvent)
+    event_triggered = QtCore.Signal(QtCore.QObject, QtCore.QEvent)
 
     # =====================================================================
     # +++ CONSTRUCTOR
@@ -165,10 +165,12 @@ class VisualTreeDebugger(QtWidgets.QWidget):
         self._painter.current_items = visual_items
 
 
-# ====================================================================
-# +++ ENTRY
-# =====================================================================
+# ********************************************************************
+# +++ TESTING
+# *********************************************************************
 if __name__ == "__main__":
+
+    # Main testing window class
     class Window(QtWidgets.QMainWindow):
         def __init__(self):
             super(Window, self).__init__(None)
@@ -185,7 +187,9 @@ if __name__ == "__main__":
 
     app = QtWidgets.QApplication([])
     window = Window()
-    debugger = VisualTreeDebugger(window)
-    window.show()
 
+    # Attach debugger
+    debugger = VisualTreeDebugger(window)
+
+    window.show()
     app.exec_()
