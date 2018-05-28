@@ -176,6 +176,7 @@ if __name__ == "__main__":
             super(Window, self).__init__(None)
 
             dummy_lyt = QtWidgets.QVBoxLayout()
+
             dummy_lyt.addWidget(QtWidgets.QPushButton('Button'))
             dummy_lyt.addWidget(QtWidgets.QLabel('Button'))
             dummy_lyt.addWidget(QtWidgets.QCheckBox('Button'))

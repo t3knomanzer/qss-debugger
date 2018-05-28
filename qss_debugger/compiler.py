@@ -3,6 +3,7 @@
 # *********************************************************************
 import os
 import re
+from future.utils import iteritems
 
 
 # *********************************************************************
@@ -58,7 +59,7 @@ class VisualCompilerDefault(VisualCompilerBase):
         with open(input_file_path, 'r') as file_handle:
             content = file_handle.read()
 
-            for key, value in vars_map.iteritems():
+            for key, value in iteritems(vars_map):
                 re_value = re.compile(key, re.IGNORECASE)
                 content = re_value.sub(value, content)
 
